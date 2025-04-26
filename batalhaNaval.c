@@ -15,10 +15,28 @@ int main(){
     }
 
     // Posiciona o navio horizontal.
-    tabuleiro[2][2] = 3;
-    tabuleiro[2][3] = 3;
-    tabuleiro[2][4] = 3;
+    tabuleiro[1][1] = 3;
+    tabuleiro[1][2] = 3;
+    tabuleiro[1][3] = 3;
 
+    // Posiciona o navio diagonal/direita.
+    int linha_inicio_dd = 4;
+    int coluna_inicio_dd = 4;
+    int tamanho_navio_dd = 3;
+
+    for(int i = 0; i < tamanho_navio_dd; i++){
+        tabuleiro[linha_inicio_dd - i][coluna_inicio_dd + i] = 3;
+    }
+
+    // Posiciona o navio diagonal/esquerda.
+    int linha_inicio_de = 8;
+    int coluna_inicio_de = 3;
+    int tamanho_navio_de = 3;
+
+    for(int i = 0; i < tamanho_navio_de; i++){
+        tabuleiro[linha_inicio_de - i][coluna_inicio_de - i] = 3;
+    }
+    
     // Posiciona o navio vertical.
     tabuleiro[6][7] = 3;
     tabuleiro[7][7] = 3;
