@@ -20,8 +20,8 @@ int main(){
     tabuleiro[1][3] = 3;
 
     // Posiciona o navio diagonal/direita.
-    int linha_inicio_dd = 4;
-    int coluna_inicio_dd = 4;
+    int linha_inicio_dd = 2;
+    int coluna_inicio_dd = 5;
     int tamanho_navio_dd = 3;
 
     for(int i = 0; i < tamanho_navio_dd; i++){
@@ -30,7 +30,7 @@ int main(){
 
     // Posiciona o navio diagonal/esquerda.
     int linha_inicio_de = 8;
-    int coluna_inicio_de = 3;
+    int coluna_inicio_de =2;
     int tamanho_navio_de = 3;
 
     for(int i = 0; i < tamanho_navio_de; i++){
@@ -38,9 +38,83 @@ int main(){
     }
     
     // Posiciona o navio vertical.
-    tabuleiro[6][7] = 3;
-    tabuleiro[7][7] = 3;
-    tabuleiro[8][7] = 3;
+    tabuleiro[6][8] = 3;
+    tabuleiro[7][8] = 3;
+    tabuleiro[8][8] = 3;
+
+    // Insere o cone.
+    int linha_origem_cone = 3;
+    int coluna_origem_cone = 7;
+
+    for(linha = 0; linha < 10; linha++){
+        for(coluna = 0; coluna < 10; coluna++){
+
+            int linha_cone = linha - linha_origem_cone;
+            int coluna_cone = coluna - coluna_origem_cone;
+
+            if(linha_cone == 0){
+                if(coluna_cone >= -1 && coluna_cone <= 1){
+                    tabuleiro[linha][coluna] = 5;
+                }            
+            }
+            else if(linha_cone == 1){
+                if(coluna_cone >= -2 && coluna_cone <= 2){
+                    tabuleiro[linha][coluna] = 5;
+                }
+            }
+            else if(linha_cone == -1){
+                if(coluna_cone == 0){
+                    tabuleiro[linha][coluna] = 5;
+                }
+            }
+        }
+    }
+
+    // Insere octaedro.
+    int linha_origem_octa = 3;
+    int coluna_origem_octa = 1;
+
+    for(linha = 0; linha < 10; linha++){
+        for(coluna = 0; coluna < 10; coluna++){
+
+            int octa_linha = linha - linha_origem_octa;
+            int octa_coluna = coluna - coluna_origem_octa;
+
+            if(octa_linha == 0){
+                if(octa_coluna >= -1 && octa_coluna <= 1){
+                    tabuleiro[linha][coluna] = 5;
+                }            
+            }
+            else if(octa_coluna == 0){
+                if(octa_linha >= -1 && octa_linha <= 1){
+                    tabuleiro[linha][coluna] = 5;
+                }
+            }
+        }
+    }
+
+    // Insere cruz.
+    int linha_origem_cruz = 6;
+    int coluna_origem_cruz = 4;
+
+    for(linha = 0; linha < 10; linha++){
+        for(coluna = 0; coluna < 10; coluna++){
+
+            int cruz_linha = linha - linha_origem_cruz;
+            int cruz_coluna = coluna - coluna_origem_cruz;
+
+            if(cruz_linha == 0){
+                if(cruz_coluna >= -2 && cruz_coluna <= 2){
+                    tabuleiro[linha][coluna] = 5;
+                }
+            }
+            else if(cruz_coluna == 0){
+                if(cruz_linha >= -1 && cruz_linha <= 1){
+                    tabuleiro[linha][coluna] = 5;
+                }
+            }
+        }
+    }
 
     // Imprime cabeçalho das colunas ('A' a 'J').
     printf("   ");
@@ -49,7 +123,7 @@ int main(){
     }
     printf("\n");
 
-    // Imprime o índice (1 a 10) e conteúdo (0 ou 3) das linhas.
+    // Imprime o índice (1 a 10) e o conteúdo (0, 3 ou 5) das linhas.
     for(linha = 0; linha < 10; linha++){
         printf("%2d ", linha + 1);
 
